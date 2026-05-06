@@ -3,7 +3,7 @@
     "name": "Ubuntu",
     "description": "A popular beginner-friendly distribution with strong hardware support, regular releases, and a large community.",
     "desktop": "GNOME",
-    "packageManager": "APT",
+    "packageManager": "SNAP and APT",
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,

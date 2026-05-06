@@ -73,22 +73,22 @@ export function evaluateAnswers(userAnswers, distros) {
       }
     }
 
-    // === PRE-INSTALLED APPLICATIONS ===
+    //bloat
     if (userAnswers['Pre-installed applications'] !== undefined) {
       const preInstalled = userAnswers['Pre-installed applications'];
       if (preInstalled === 0) {
-        // "default preset values" - wants full featured distro
+        // "default preset values"
         matchDetails.preinstalled = 'Wants defaults';
       } else if (preInstalled === 1) {
-        // "choose settings myself" - wants flexibility
+        // "choose settings myself"
         matchDetails.preinstalled = 'Wants customization';
       } else if (preInstalled === 2) {
-        // "configure with graphical apps" - GUI tools needed
+        // "configure with graphical apps"
         matchDetails.preinstalled = 'Wants GUI tools';
       }
     }
 
-    // === USER EXPERIENCE / UI PREFERENCE ===
+    //UI preference
     if (userAnswers['User Experience'] !== undefined) {
       const uiPref = userAnswers['User Experience'];
       if (uiPref === 0) {
@@ -110,7 +110,7 @@ export function evaluateAnswers(userAnswers, distros) {
       }
     }
 
-    // === SOFTWARE SCOPE ===
+    //open vs closed source
     if (userAnswers.Scope !== undefined) {
       const scope = userAnswers.Scope;
       if (scope === 0) {
@@ -122,7 +122,7 @@ export function evaluateAnswers(userAnswers, distros) {
       }
     }
 
-    // === PRIVACY ===
+    //privacy
     if (userAnswers.Privacy !== undefined) {
       const privacy = userAnswers.Privacy;
       if (privacy === 0 && distro.privacyFocus) {
@@ -134,7 +134,7 @@ export function evaluateAnswers(userAnswers, distros) {
       }
     }
 
-    // === SOFTWARE ADMINISTRATION ===
+    //downloading
     if (userAnswers.Administration !== undefined) {
       const admin = userAnswers.Administration;
       if (admin === 0) {
@@ -146,7 +146,7 @@ export function evaluateAnswers(userAnswers, distros) {
       }
     }
 
-    // === UPDATES ===
+    //updates
     if (userAnswers.Updates !== undefined) {
       const updates = userAnswers.Updates;
       if (updates === 0) {
