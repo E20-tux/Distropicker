@@ -1,0 +1,59 @@
+{
+  "Use case": {
+    "q1": "What is your primary use case for Linux?",
+    "a1": "I want a Linux distribution for daily use",
+    "a2": "I want to use Linux for anonymous web browsing",
+    "a3": "I prefer a Linux distribution which is supported by game publishers",
+    "a4": "I want to execute all programs in an isolated area",
+    "a5": "The user is visually impaired",
+    "a6": "Has Live Mode: Can be started using discs or usb sticks to test it out (before installing)"
+  },
+  "Proficiency": {
+    "q1": "How would you rate your proficiency using a computer?",
+    "a1": "I often need help from others to fix problems with my computer",
+    "a2": "I am already able to solve some computer problems by myself",
+    "a3": "I can troubleshoot most or all computer problems by myself"
+  },
+  "Familiarity": {
+    "q1": "How would you rate your knowledge of Linux itself?",
+    "a1": "I have little or no knowledge about Linux-based operating systems",
+    "a2": "I have already used Linux-based operating systems for some purposes",
+    "a3": "I have a good understanding about Linux-based operating systems"
+  },
+  "Pre-installed applications": {
+    "q1": "How many settings do you wish to tweak by yourself during installation?",
+    "a1": "I want to use the default preset values in the installation assistant",
+    "a2": "I want to choose the settings by myself",
+    "a3": "I want to configure as much as possible using graphical applications"
+  },
+  "Help": {
+    "q1": "How do you prefer to solve problems when they arise?",
+    "a1": "I am able to solve my problems using guides from wiki pages or tutorials",
+    "a2": "I prefer asking others for help"
+  },
+  "User Experience": {
+    "q1": "Which user interface style do you prefer?",
+    "a1": "I prefer a macOS-like user interface",
+    "a2": "I prefer a windows-like user interface"
+  },
+  "Scope": {
+    "q1": "How much software do you want included out of the box?",
+    "a1": "I prefer a Linux distribution shipping all the basic programs I need to start working immediately after installation",
+    "a2": "I want to choose the basic programs to install myself"
+  },
+  "Privacy": {
+    "q1": "How do you feel about online services and data collection?",
+    "a1": "I do not want this",
+    "a2": "If it improves my user experience, I agree with using such online services"
+  },
+  "Administration": {
+    "q1": "How do you prefer to install software on your system?",
+    "a1": "I want to install my programs using a kind of 'App store'",
+    "a2": "I am willing to learn how to use terminal comands for a faster installation"
+  },
+  "Updates": {
+    "q1": "What is your preference for software updates?",
+    "a1": "I prefer stable updates",
+    "a2": "I prefer fast updates"
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DistroFinder</title>
+  <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/a-/ALV-UjWrZV_Ehi6NILqrfAQ1FrBJ6LUjYBgR32r2QiFyHbStrHATaTYGR8E6HCobsGm8n80swDnwKLA3VMOXDO-NpeWABrcjkuqyQIy8Ji5nzZgihBBOMW8fmeY2sJ_Ad0Ap4eSGB83X0PkfdkeSk-eM5uZq9sIUQ_6dLnCJCvOSZUWHWE4Sxqw8nH4RWrpqPLcXnalih4sjTFaiQRQjiHXmamsvi1EsP0zsX6qR2Fm1ADwaMyQkD0VWybJk1kL_q8rTxJnE8lHPOLdGF58Q2VgGZvpcOpQ4kENH_p-7-b5UPmv0tgaCJ4-G2FttxPyXZYbj3E73hGjf_5hfrJFZUu3Hvyg65AaA7KvMzgojbXxbzERyv9cIb2B9D_EyolUTjWo56FP0RytM-3JNME-pfMyVx76iGMDHU7ZyL2ad5teo_rT0ZJWJdibh6sQ02Ap4VXpVKcS1WhGvUH0xD8zBcOsjRgL37N90dM8oBBAfEHIQXmS2eKSH8bLaoTrwDTrLyyO59hDP9jTxD7KSK8Mt8OgQsnFMAdPcTtABD2AIYRYRDUT28jjuBMuoVWkNBTmAKAh3ucYpKaev-HAU6NJtMrzbLIaCucsaGIljqVpH_HD-Mh8C4xDm0a0dzzLNc93ca8_FRTUzmlmvkvMlmqPt_QHeFDADC3-nz-IJA1n9rOPvoFYfB2OQBuWSAuz3GvCoNqtsl78QSdCwM4ujY3KjsmZ0wOq1LyslfgaTnHzY2IQu_OxGa7dKPMTsJaOWfE1whPSP5Z2GJBh-dHwVJMpBFE6a8jZtTLMGjrUPn-vetY08iYU4LQ4lahzPptVAafgMZYYmU-cetXxRyYX8v9-gWidmlrSaTkM0crZWkUed5QY9b0LdfGvf4OgZC3g_ZCjlFNfUOwZA7IyHNK2krVndlCrsRg4FweKa5sx4i2CHnqhhHzTk8hNw5Eqd7qxjxOrbUE0E6Bohg0ROb6VrGSf0DVXiap8P1uBEBEevyg-kZHfOTuf4ItRhYD1JRryrxHNOyCfT7-FLYVp3cSHvHnw9Q1NeExHUrwJvynP4iEwrTpqkqsrlnHDcj98almEl=s60-c">
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
+<body>
+        <div class="quiz-container">
+        <div id="quiz">
+            <h2 id="question">Question Text</h2>
+            <div id="answer-buttons" class="btn-container">
+                <!-- Answer buttons will be dynamically inserted here by JavaScript -->
+            </div>
+            <button id="next-btn" disabled>Next</button>
+        </div>
+        <div id="results" class="results-container" style="display: none;">
+            <h2>Your Recommended Distributions</h2>
+            <p id="intro-text">Based on your answers, here are the 3 best recommended Linux distributions for you:</p>
+            <div id="recommendations"></div>
+            <button id="restart-btn">Restart Quiz</button>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
