@@ -1,7 +1,7 @@
 export async function loadData() {
   const [quizResponse, distrosResponse] = await Promise.all([
-    fetch('data.json'),
-    fetch('distros.json')
+    fetch('/data.json'),
+    fetch('/distros.json')
   ]);
 
   if (!quizResponse.ok) {
