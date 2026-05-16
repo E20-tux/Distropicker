@@ -4,9 +4,10 @@
     "description": "A popular beginner-friendly distribution with strong hardware support, regular releases, and a large community.",
     "desktop": "GNOME",
     "packageManager": "SNAP/APT",
-    "beginnerFriendly" : true,
+    "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["daily use", "office work", "education", "general desktop"],
     "website": "https://ubuntu.com"
   },
@@ -18,6 +19,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["daily use", "customization"],
     "website": "https://kubuntu.org"
   },
@@ -29,6 +31,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["older hardware", "lightweight desktop", "revival", "general desktop"],
     "website": "https://xubuntu.org"
   },
@@ -40,6 +43,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["low-resource hardware", "lightweight desktop", "revival", "basic computing"],
     "website": "https://lubuntu.me"
   },
@@ -51,6 +55,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["traditional desktop", "longevity", "general desktop"],
     "website": "https://ubuntu-mate.org"
   },
@@ -62,6 +67,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["modern desktop", "simplicity", "creative work"],
     "website": "https://ubuntubudgie.org"
   },
@@ -70,10 +76,11 @@
     "description": "A multimedia-focused Ubuntu flavour with a collection of audio, video, and graphics creation tools.",
     "desktop": "Xfce",
     "packageManager": "SNAP/APT",
-    "beginnerFriendly": false,
+    "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
-    "idealUseCases": ["audio production", "video editing", "creative studios"],
+    "updateType": "stable",
+    "idealUseCases": ["audio production", "video editing", "creative work"],
     "website": "https://ubuntustudio.org"
   },
   {
@@ -84,7 +91,8 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
-    "idealUseCases": ["daily use"],
+    "updateType": "stable",
+    "idealUseCases": ["daily use", "office work"],
     "website": "https://linuxmint.com"
   },
   {
@@ -95,6 +103,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "rolling",
     "idealUseCases": ["development", "learning Linux", "modern desktop"],
     "website": "https://getfedora.org"
   },
@@ -105,9 +114,9 @@
     "packageManager": "APT",
     "beginnerFriendly": true,
     "liveMode": true,
-    "privacyFocus": false,
-    "idealUseCases": ["gaming", "daily use"]
-    ,"website": "https://pop.system76.com"
+    "updateType": "stable",
+    "idealUseCases": ["gaming", "daily use", "development"],
+    "website": "https://pop.system76.com"
   },
   {
     "name": "Manjaro",
@@ -117,6 +126,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "rolling",
     "idealUseCases": ["cutting-edge software", "general desktop", "customization", "revival"],
     "website": "https://manjaro.org"
   },
@@ -128,6 +138,7 @@
     "beginnerFriendly": false,
     "liveMode": false,
     "privacyFocus": true,
+    "updateType": "rolling",
     "idealUseCases": ["custom system builds", "learning Linux", "advanced desktop"],
     "website": "https://archlinux.org"
   },
@@ -136,9 +147,10 @@
     "description": "A stable and reliable distribution valued for its long release cycle and extensive package repository.",
     "desktop": "Multiple (GNOME, KDE Plasma, Xfce, MATE, LXQt, Budgie, and more)",
     "packageManager": "APT",
-    "beginnerFriendly": false,
+    "beginnerFriendly": true,
     "liveMode": true,
-    "privacyFocus": false,
+    "privacyFocus": true,
+    "updateType": "stable",
     "idealUseCases": ["servers", "stable desktop", "advanced users"],
     "website": "https://www.debian.org"
   },
@@ -150,6 +162,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": true,
+    "updateType": "stable",
     "idealUseCases": ["creative work", "design", "simple desktop"],
     "website": "https://elementary.io"
   },
@@ -161,30 +174,9 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": true,
+    "updateType": "stable",
     "idealUseCases": ["Windows migration", "daily desktop", "first-time Linux users"],
     "website": "https://zorin.com/os"
-  },
-  {
-    "name": "Bazzzite",
-    "description": "A community-driven Linux distribution focused on modularity, performance, and visual customization.",
-    "desktop": "KDE Plasma",
-    "packageManager": "APT",
-    "beginnerFriendly": true,
-    "liveMode": true,
-    "privacyFocus": false,
-    "idealUseCases": ["performance", "customization", "modern desktop"],
-    "website": "https://bazzzite.org"
-  },
-  {
-    "name": "CachyOS",
-    "description": "A performance-focused Ubuntu derivative with optimized packages and a polished KDE experience.",
-    "desktop": "KDE Plasma",
-    "packageManager": "APT",
-    "beginnerFriendly": true,
-    "liveMode": true,
-    "privacyFocus": false,
-    "idealUseCases": ["performance", "modern desktop", "daily use"],
-    "website": "https://cachyos.org"
   },
   {
     "name": "EndeavourOS",
@@ -216,6 +208,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "stable",
     "idealUseCases": ["modern desktop", "KDE experience", "daily use"],
     "website": "https://neon.kde.org"
   },
@@ -227,6 +220,7 @@
     "beginnerFriendly": false,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "rolling",
     "idealUseCases": ["declarative configuration", "development", "reproducible systems"],
     "website": "https://nixos.org"
   },
@@ -238,6 +232,7 @@
     "beginnerFriendly": true,
     "liveMode": true,
     "privacyFocus": false,
+    "updateType": "rolling",
     "idealUseCases": ["gaming", "content creation", "multimedia"],
     "website": "https://nobaraproject.org"
   },

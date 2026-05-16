@@ -12,59 +12,59 @@ function scoreDistro(distro, answers) {
   const matchedConditions = [];
   const unmatchedConditions = [];
 
-  // Proficiency & Familiarity: Low proficiency = prefer beginnerFriendly
-  if (answers.Proficiency === 'I often need help from others to fix problems with my computer') {
-    if (distro.beginnerFriendly) {
-      score += 20;
-      matchedConditions.push('Beginner-friendly distro');
-    } else {
-      unmatchedConditions.push('Not ideal for beginners');
-    }
-  } else if (answers.Proficiency === 'I can troubleshoot most or all computer problems by myself') {
-    score += 5; // Any distro is fine, slight bonus if advanced
-    if (!distro.beginnerFriendly) score += 10;
-  }
-
-  // Familiarity: Little knowledge = prefer beginner-friendly
-  if (answers.Familiarity === 'I have little or no knowledge about Linux-based operating systems') {
-    if (distro.beginnerFriendly) {
-      score += 15;
-      matchedConditions.push('Good for Linux beginners');
-    } else {
-      unmatchedConditions.push('Steep learning curve');
+  // Proficiency: Low proficiency = prefer beginner-friendly
+  if (answers.Proficiency) {
+    if (answers.Proficiency === 'I often need help from others to fix computer problems') {
+      if (distro.beginnerFriendly) {
+        score += 25;
+        matchedConditions.push('Beginner-friendly');
+      } else {
+        score -= 15;
+        unmatchedConditions.push('Steep learning curve');
+      }
+    } else if (answers.Proficiency === 'I can solve some computer problems by myself') {
+      score += 10;
+      matchedConditions.push('Good for intermediate users');
+    } else if (answers.Proficiency === 'I can troubleshoot most or all computer problems by myself') {
+      if (!distro.beginnerFriendly) {
+        score += 10;
+        matchedConditions.push('Advanced customization available');
+      }
     }
   }
 
-  // Live Mode preference
-  if (answers['Use case']?.includes('Live Mode')) {
-    if (distro.liveMode) {
-      score += 15;
-      matchedConditions.push('Has Live Mode support');
-    } else {
-      unmatchedConditions.push('No Live Mode available');
+  if (answers.Familiarity) {
+    if (answers.Familiarity === 'I have little or no knowledge about Linux') {
+      if (distro.beginnerFriendly) {
+        score += 20;
+        matchedConditions.push('Great for Linux beginners');
+      } else {
+        score -= 10;
+        unmatchedConditions.push('Requires Linux knowledge');
+      }
+    } else if (answers.Familiarity === 'I have already used Linux for some purposes') {
+      score += 5;
+    } else if (answers.Familiarity === 'I have a good understanding of Linux') {
+      score += 5;
+      if (!distro.beginnerFriendly) {
+        score += 5;
+        matchedConditions.push('Suitable for experienced users');
+      }
     }
   }
 
-  // Privacy focus
-  if (answers.Privacy === 'I do not want this') {
-    if (distro.privacyFocus) {
-      score += 20;
-      matchedConditions.push('Privacy-focused');
-    } else {
-      unmatchedConditions.push('May collect data');
-    }
-  }
-
-  // User Experience preferences
-  if (answers['User Experience'] === 'I prefer a macOS-like user interface') {
-    if (distro.desktop === 'Pantheon') {
-      score += 15;
-      matchedConditions.push('macOS-like interface (Pantheon)');
-    }
-  } else if (answers['User Experience'] === 'I prefer a windows-like user interface') {
-    if (distro.desktop === 'Cinnamon' || distro.desktop === 'KDE Plasma') {
-      score += 15;
-      matchedConditions.push('Windows-like interface');
+  // Desktop preference matching
+  if (answers.Desktop) {
+    if (answers.Desktop === 'macOS-like (modern and elegant)') {
+      if (distro.desktop === 'Pantheon') {
+        score += 20;
+        matchedConditions.push('macOS-like interface (Pantheon)');
+      }
+    } else if (answers.Desktop === 'Windows-like (traditional taskbar)') {
+      if (distro.desktop === 'Cinnamon' || distro.desktop === 'KDE Plasma' || distro.desktop === 'MATE') {
+        score += 15;
+        matchedConditions.push('Windows-like interface');
+      }
     }
   }
 
@@ -72,37 +72,109 @@ function scoreDistro(distro, answers) {
   if (answers['Use case']) {
     const useCase = answers['Use case'];
     if (distro.idealUseCases) {
-      distro.idealUseCases.forEach(ideaUseCase => {
-        if (useCase.includes('daily use') && ideaUseCase === 'daily use') {
-          score += 15;
-          matchedConditions.push('Great for daily use');
-        }
-        if (useCase.includes('gaming') && ideaUseCase === 'gaming') {
-          score += 20;
-          matchedConditions.push('Gaming support');
-        }
-        if (useCase.includes('anonymous') && ideaUseCase === 'privacy') {
-          score += 25;
-          matchedConditions.push('Anonymous browsing support');
-        }
-      });
+      if (useCase.includes('Daily use') && distro.idealUseCases.includes('daily use')) {
+        score += 15;
+        matchedConditions.push('Excellent for daily use');
+      }
+      if (useCase.includes('Gaming') && distro.idealUseCases.includes('gaming')) {
+        score += 20;
+        matchedConditions.push('Gaming optimized');
+      }
+      if (useCase.includes('development') && distro.idealUseCases.includes('development')) {
+        score += 15;
+        matchedConditions.push('Development friendly');
+      }
+      if (useCase.includes('Creative') && (distro.idealUseCases.includes('creative work') || distro.idealUseCases.includes('audio production') || distro.idealUseCases.includes('video editing'))) {
+        score += 20;
+        matchedConditions.push('Creative tools included');
+      }
+      if (useCase.includes('Server') && distro.idealUseCases.includes('servers')) {
+        score += 20;
+        matchedConditions.push('Server administration ready');
+      }
+      if (useCase.includes('customization') && distro.idealUseCases.includes('customization')) {
+        score += 15;
+        matchedConditions.push('Highly customizable');
+      }
+    }
+  }
+
+  // Installation preferences
+  if (answers.Installation) {
+    if (answers.Installation === 'Use default presets - I want minimal setup time') {
+      if (distro.beginnerFriendly && distro.liveMode) {
+        score += 10;
+        matchedConditions.push('Easy installation process');
+      }
+    } else if (answers.Installation === 'I want complete control over configuration') {
+      if (!distro.beginnerFriendly || distro.idealUseCases.includes('custom system builds')) {
+        score += 15;
+        matchedConditions.push('Full configuration control');
+      }
+    }
+  }
+
+  // Privacy focus
+  if (answers.Privacy) {
+    if (answers.Privacy === 'Privacy is critical - no data collection') {
+      if (distro.privacyFocus) {
+        score += 25;
+        matchedConditions.push('Privacy-focused distribution');
+      } else {
+        score -= 5;
+        unmatchedConditions.push('May include telemetry');
+      }
     }
   }
 
   // Pre-installed applications / Scope
-  if (answers.Scope === 'I want to choose the basic programs to install myself') {
-    score += 5; // Minimal bonus for minimal-out-of-box distros
-  } else if (answers.Scope === 'I prefer a Linux distribution shipping all the basic programs I need') {
-    score += 5; // Minimal bonus for full-featured distros
+  // Software scope preferences
+  if (answers.Software) {
+    if (answers.Software === 'Full suite of programs - ready to use immediately') {
+      if (distro.idealUseCases.includes('office work') || distro.idealUseCases.includes('daily use')) {
+        score += 10;
+        matchedConditions.push('Ships with essential software');
+      }
+    }
   }
 
   // Updates preference
-  if (answers.Updates === 'I prefer stable updates') {
-    // Penalize rolling-release only distros
-    if (distro.name === 'Arch Linux' || distro.name === 'Gentoo Linux') {
-      score -= 10;
-      unmatchedConditions.push('Rolling release (not stable)');
+  if (answers.Updates) {
+    if (answers.Updates === 'Stable updates - fewer but tested changes') {
+      if (distro.updateType === 'stable') {
+        score += 20;
+        matchedConditions.push('Stable release cycle');
+      } else {
+        score -= 10;
+        unmatchedConditions.push('Rolling release (frequent updates)');
+      }
+    } else if (answers.Updates === 'Rolling updates - latest software frequently') {
+      if (distro.updateType === 'rolling') {
+        score += 20;
+        matchedConditions.push('Latest software available');
+      } else {
+        score -= 5;
+        unmatchedConditions.push('Slower update cycle');
+      }
     }
+  }
+
+  // Help preference (community size is harder to quantify, so we use beginner-friendly as proxy)
+  if (answers.Help) {
+    if (answers.Help === 'I prefer using guides, wikis, and tutorials') {
+      // Larger communities have better documentation
+      if (distro.name === 'Ubuntu' || distro.name === 'Fedora' || distro.name === 'Linux Mint' || 
+          distro.name === 'Arch Linux' || distro.name === 'Debian' || distro.name === 'Manjaro') {
+        score += 15;
+        matchedConditions.push('Large community with extensive documentation');
+      }
+    }
+  }
+
+  // Live mode bonus if user seems to value trying before installing
+  if (distro.liveMode && distro.beginnerFriendly) {
+    score += 5;
+    matchedConditions.push('Can test via Live Mode');
   }
 
   return {
