@@ -1,3 +1,5 @@
+import { recordAnswer, getRecommendations } from './evaluator.js';
+
 export async function loadData() {
   const [quizResponse, distrosResponse] = await Promise.all([
     fetch('/data.json'),
@@ -76,6 +78,11 @@ function selectAnswer(index) {
   const buttons = document.querySelectorAll('.answer-btn');
   buttons.forEach((btn, i) => {
     btn.classList.toggle('selected', i === index);
+    
+  // Record the answer in evaluator
+  const category = quizData[currentQuestion].category;
+  const selectedAnswer = quizData[currentQuestion].answers[index];
+  recordAnswer(category, selectedAnswer);
   });
 }
 
@@ -88,31 +95,31 @@ function showResults() {
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('results').style.display = 'block';
   
-  const scores = Object.keys(distrosData).reduce((acc, distro) => {
-    acc[distro] = 0;
-    return acc;
-  }, {});
-
-  Object.entries(answers).forEach(([questionIndex, answerIndex]) => {
-    const category = quizData[questionIndex].category;
-    const selectedAnswer = quizData[questionIndex].answers[answerIndex];
-
-    Object.entries(distrosData).forEach(([distro, criteria]) => {
-      if (criteria[category] && criteria[category].includes(selectedAnswer)) {
-        scores[distro]++;
-      }
-    });
-  });
-
-  const topDistros = Object.entries(scores)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3);
+  const recommendations = getRecommendations(distrosData);
 
   const recommendationsDiv = document.getElementById('recommendations');
-  recommendationsDiv.innerHTML = topDistros.map(([distro, score]) => `
+  recommendationsDiv.innerHTML = recommendations.map(rec => `
     <div class="recommendation">
-      <h3>${distro}</h3>
-      <p>Match: ${Math.round((score / quizData.length) * 100)}%</p>
+      <h3>${rec.distro.name}</h3>
+      <p><strong>Match Score: ${rec.score} points</strong></p>
+      <p>${rec.distro.description}</p>
+      <div class="distro-info">
+        <strong>Desktop:</strong> ${rec.distro.desktop}<br>
+        <strong>Package Manager:</strong> ${rec.distro.packageManager}
+      </div>
+      ${rec.matchedConditions.length > 0 ? `
+        <div class="conditions">
+          <p><strong>Why it's a good match:</strong></p>
+          ${rec.matchedConditions.map(cond => `<div class="met">${cond}</div>`).join('')}
+        </div>
+      ` : ''}
+      ${rec.unmatchedConditions.length > 0 ? `
+        <div class="conditions">
+          <p><strong>Considerations:</strong></p>
+          ${rec.unmatchedConditions.map(cond => `<div class="unmet">${cond}</div>`).join('')}
+        </div>
+      ` : ''}
+      <p><a href="${rec.distro.website}" target="_blank">Visit ${rec.distro.name} Website →</a></p>
     </div>
   `).join('');
 }

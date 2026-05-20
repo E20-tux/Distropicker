@@ -64,13 +64,22 @@ body {
     text-align: left;
 }
 
+.recommendation,
 .recommendation-card {
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     padding: 15px;
     background-color: #fafafa;
+    transition: box-shadow 0.3s ease;
 }
 
+.recommendation:hover,
+.recommendation-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.recommendation h3,
 .recommendation-card h3 {
     color: #333;
     margin-top: 0;
@@ -123,4 +132,20 @@ body {
     border: 1px solid #ddd;
     background-color: #e7f4ff;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+#restart-btn:hover {
+    background-color: #c9e4ff;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+    
