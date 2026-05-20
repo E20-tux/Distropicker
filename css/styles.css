@@ -18,7 +18,8 @@ body {
     max-width: 800px;
 }
 
-.btn-container button {
+.btn-container button,
+amnwer.btn {
     display: block;
     width: 100%;
     padding: 10px;
@@ -27,7 +28,21 @@ body {
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+.answer-btn:hover {
+    background-color: #e8e8e8;
+    border-color: #999;
+}
+
+.answer-btn.selected {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #45a049;
+    font-weight: bold;
+}
+
 
 #next-btn {
     margin-top: 20px;
